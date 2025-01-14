@@ -1,10 +1,17 @@
-﻿namespace MApeopleMAUI
+﻿namespace MApeopleMAUI;
+
+public partial class App : Application
 {
-    public partial class AppShell : Shell
-{
-    public AppShell()
+    public static PersonRepository PersonRepo { get; private set; }
+
+    public App(PersonRepository repo)
     {
         InitializeComponent();
+        PersonRepo = repo;
     }
-}
+
+    protected override Window CreateWindow(IActivationState activationState)
+    {
+        return new Window(new AppShell());
+    }
 }
